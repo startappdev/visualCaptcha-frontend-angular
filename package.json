@@ -1,0 +1,19 @@
+{
+  "name": "visualcaptcha-frontend-angular",
+  "version": "1.0.0",
+  "description": "[![Codacy](https://www.codacy.com/project/badge/c0511ed25fa4454fa1757ac241ddab2b)](https://www.codacy.com/app/bruno-bernardino/visualCaptcha-frontend-angular)\r [![Code Climate](https://codeclimate.com/github/emotionLoop/visualCaptcha-frontend-angular/badges/gpa.svg)](https://codeclimate.com/github/emotionLoop/visualCaptcha-frontend-angular)",
+  "main": "visualcaptcha.angular.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/startappdev/visualCaptcha-frontend-angular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/startappdev/visualCaptcha-frontend-angular/issues"
+  },
+  "homepage": "https://github.com/startappdev/visualCaptcha-frontend-angular#readme"
+}
