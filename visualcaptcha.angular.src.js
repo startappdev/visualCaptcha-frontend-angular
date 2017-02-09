@@ -1337,7 +1337,7 @@ define( 'visualcaptcha.angular',[
                     method: 'GET',
                     url: url,
                     withCredentials: true
-                }).success( callback );
+                }).then( function(response) {callback(response.data);} );
             };
             return {
                 restrict: 'A',
