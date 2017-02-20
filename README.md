@@ -5,13 +5,7 @@
 
 AngularJS directive for the visualCaptcha front-end core package.
 
-
-## Installation with Bower
-
-```
-bower install visualcaptcha.angular
-```
-
+This is a StartaApp fork updated to work with angularjs 1.6.x
 
 ## Usage and Options
 
