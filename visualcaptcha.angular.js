@@ -560,7 +560,12 @@ define( 'visualcaptcha/core',[],function() {
 
     // Check if the device supports the HTML5 audio element, for accessibility
     // I'm using an IIFE just because I don't want audioElement to be in the rest of the scope
-    _supportsAudio = function() {
+    _supportsAudio = function(config) {
+
+        if (!config.allowAudio) {
+            return false;
+        }
+
         var audioElement,
             support = false;
 
@@ -587,7 +592,8 @@ define( 'visualcaptcha/core',[],function() {
             imageFieldName,
             audioFieldName,
             namespace,
-            namespaceFieldName;
+            namespaceFieldName,
+            supportsAudio;
 
         refresh = function() {
             return _refresh.call( this, config );
@@ -637,6 +643,10 @@ define( 'visualcaptcha/core',[],function() {
             return config.namespaceFieldName;
         };
 
+        supportsAudio = function() {
+            return _supportsAudio.call(this, config);
+        };
+
         core = {
             refresh: refresh,
             isLoading: isLoading,
@@ -651,7 +661,7 @@ define( 'visualcaptcha/core',[],function() {
             namespace: namespace,
             namespaceFieldName: namespaceFieldName,
             isRetina: _isRetina,
-            supportsAudio: _supportsAudio
+            supportsAudio: supportsAudio
         };
 
         // Load the data if auto refresh is enabled
@@ -718,6 +728,7 @@ define('visualcaptcha/config',[ 'visualcaptcha/xhr-request' ], function( xhrRequ
             imageFieldName: '',
             imageName: '',
             imageValues: [],
+            allowAudio: false,
             /* CALLBACKS */
             callbacks: {},
             _loading: function() {},
@@ -904,6 +915,9 @@ define( 'visualcaptcha/helpers',[],function() {
     };
 
     _bindClick = function( element, callback ) {
+        if (element === undefined) {
+            return false;
+        }
         if ( Array.isArray( element ) ) {
             for ( var i = 0; i < element.length; i++ ) {
                 _bindClick( element[ i ], callback );
@@ -962,7 +976,7 @@ define( 'visualcaptcha/templates',[],function() {
 
         btnRefresh =
             '<div class="visualCaptcha-refresh-button">' +
-                '<a href="#"><img src="{path}refresh{retinaExtra}.png" title="{refreshTitle}" alt="{refreshAlt}" /></a>' +
+                '<a href="#"><i class="fas fa-redo"></i></a>' +
             '</div>';
 
         string =
