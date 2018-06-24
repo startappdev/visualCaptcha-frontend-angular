@@ -1246,8 +1246,7 @@ define( 'visualcaptcha.vanilla',[
             imgElement,
             images,
             imageIndex,
-            imageInput,
-            imageInputHTML;
+            imageInput;
 
         // Get the selection input element
         imageInput = helpers.findByTag( explanation, 'input', true );
