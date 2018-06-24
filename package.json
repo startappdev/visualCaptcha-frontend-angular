@@ -1,6 +1,6 @@
 {
   "name": "visualcaptcha-frontend-angular",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "[![Codacy](https://www.codacy.com/project/badge/c0511ed25fa4454fa1757ac241ddab2b)](https://www.codacy.com/app/bruno-bernardino/visualCaptcha-frontend-angular)\r [![Code Climate](https://codeclimate.com/github/emotionLoop/visualCaptcha-frontend-angular/badges/gpa.svg)](https://codeclimate.com/github/emotionLoop/visualCaptcha-frontend-angular)",
   "main": "visualcaptcha.angular.js",
   "scripts": {

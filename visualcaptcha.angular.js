@@ -1045,13 +1045,14 @@ define( 'visualcaptcha/templates',[],function() {
         }
 
         string =
-            '<p class="visualCaptcha-explanation">{explanation}</p>' +
+            '<p class="visualCaptcha-explanation">{explanation}{selected}</p>' +
             '<div class="visualCaptcha-possibilities">{images}</div>';
 
         params = {
             imageFieldName: captcha.imageFieldName(),
             explanation: language.explanation.replace( /ANSWER/, captcha.imageName() ),
-            images: images
+            images: images,
+            selected: '<input class="form-control imageField" type="hidden" name="" value="" readonly="readonly" />'
         };
 
         return _t( string, params );
@@ -1248,17 +1249,12 @@ define( 'visualcaptcha.vanilla',[
             imageInput,
             imageInputHTML;
 
-        // Check if an input element already exists
+        // Get the selection input element
         imageInput = helpers.findByTag( explanation, 'input', true );
 
-        if ( imageInput ) {
-            // Remove it if so
-            explanation.removeChild( imageInput );
-
-            // Remove selected class from selected image
-            images = helpers.findByClass( possibilitiesWrapper, 'img' );
-            helpers.removeClass( images, 'visualCaptcha-selected' );
-        }
+        // Remove selected class from selected image
+        images = helpers.findByClass( possibilitiesWrapper, 'img' );
+        helpers.removeClass( images, 'visualCaptcha-selected' );
 
         // Add selected class to image
         helpers.addClass( image, 'visualCaptcha-selected' );
@@ -1267,11 +1263,10 @@ define( 'visualcaptcha.vanilla',[
         imgElement = helpers.findByTag( image, 'img', true );
         imageIndex = parseInt( imgElement.getAttribute( 'data-index' ), 10 );
 
-        // Build the input HTML
-        imageInputHTML = templates.imageInput( captcha, imageIndex );
+        // Update the selection input fields
+        imageInput.name = captcha.imageFieldName();
+        imageInput.value = captcha.imageValue(imageIndex);
 
-        // Append the input
-        explanation.innerHTML += imageInputHTML;
     };
 
     // Refresh the captcha
